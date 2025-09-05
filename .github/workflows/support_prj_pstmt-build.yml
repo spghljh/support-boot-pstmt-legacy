@@ -23,6 +23,7 @@ jobs:
 
       - name: Generate Timestamp
         run: echo "BUILD_TIMESTAMP=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
+
       - name: Debug Timestamp
         run: echo "Generated Timestamp: ${{ env.BUILD_TIMESTAMP }}"
 
