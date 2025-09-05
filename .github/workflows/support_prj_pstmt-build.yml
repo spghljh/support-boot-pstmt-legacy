@@ -22,7 +22,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Generate Timestamp
-        run: echo "BUILD_TIMESTAMP=$(date +%Y%m%d-%H%M%S | tr -d ':')" >> $GITHUB_ENV
+        run: echo "BUILD_TIMESTAMP=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: Print Build Metadata
         run: |
