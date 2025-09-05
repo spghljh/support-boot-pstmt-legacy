@@ -36,7 +36,7 @@ jobs:
           echo "Triggered by: ${{ github.actor }}"
 
       - name: Build with Maven
-        run: mvn clean package -Dbuild.timestamp=${{ env.BUILD_TIMESTAMP }}
+        run: mvn clean package -Dcommit.message=${{ env.COMMIT_MSG }}
 
       - name: List JAR Output
         run: ls -lh target/*.jar
@@ -44,5 +44,5 @@ jobs:
       - name: Upload JAR as Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: support-jar-${{ env.BUILD_TIMESTAMP }}
+          name: support-jar-${{ env.COMMIT_MSG }}
           path: target/*.jar
