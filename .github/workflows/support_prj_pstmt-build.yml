@@ -21,6 +21,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Extract Commit Message
+        run: |
+          SAFE_COMMIT_MSG=$(echo "${{ github.event.head_commit.message }}" | tr -cd '[:alnum:]_-')
+          echo "COMMIT_MSG=$SAFE_COMMIT_MSG"
+          echo "COMMIT_MSG=$SAFE_COMMIT_MSG" >> $GITHUB_ENV
+
       - name: Generate Timestamp
         run: echo "BUILD_TIMESTAMP=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
 
