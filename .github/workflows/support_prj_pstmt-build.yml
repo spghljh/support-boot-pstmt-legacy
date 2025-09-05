@@ -38,7 +38,7 @@ jobs:
         run: ls -lh target/*.jar
 
       - name: Upload JAR as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: support-jar-${{ env.BUILD_TIMESTAMP }}
           path: target/*.jar
