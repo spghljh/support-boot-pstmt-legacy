@@ -82,18 +82,19 @@
 	    <artifactId>ojdbc11</artifactId>
 	    <version>23.3.0.23.09</version>
 	  </dependency>
-	  
-	  
+
 	</dependencies>
+	  
+	<build> 
+	  <finalName>${project.artifactId}-${build.timestamp}</finalName>
 	
-	
-		<build>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</build>
-	
+	  <plugins>
+	    <plugin>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-maven-plugin</artifactId>
+	    </plugin>
+	  </plugins>
+	</build> 
+
 	</project>
+ 
