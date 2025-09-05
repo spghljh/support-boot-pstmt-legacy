@@ -34,7 +34,6 @@
 		
 <properties>
   <java.version>17</java.version>
-  <commit.message>${commit.message}</commit.message>
 </properties>
 
 <build>
