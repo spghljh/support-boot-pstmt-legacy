@@ -1,9 +1,11 @@
 # 빌드 결과물
-target/
+# target 디렉토리는 제외하지만 JAR 파일은 포함
+target/*
+!target/*.jar
+
 build/
 out/
 *.class
-*.jar
 *.war
 *.ear
 
