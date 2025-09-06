@@ -30,10 +30,6 @@ jobs:
       - name: Generate Timestamp
         run: echo "BUILD_TIMESTAMP=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
 
-      - name: Debug Timestamp
-        run: |
-        echo "Generated Timestamp: ${{ env.BUILD_TIMESTAMP }}"
-
       - name: Print Build Metadata
         run: |
           echo "App Name: support_prj_pstmt-git-action"
