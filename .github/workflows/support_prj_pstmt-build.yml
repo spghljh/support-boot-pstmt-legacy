@@ -67,3 +67,5 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/support-prj-pstmt:support-jar-${{ env.COMMIT_MSG }}
+          build-args: |
+          JAR_FILE=${{ env.JAR_NAME }}
