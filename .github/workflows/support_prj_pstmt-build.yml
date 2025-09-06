@@ -1,4 +1,4 @@
-name: Build - support_prj_pstmt-git-action
+name: Build and Push Docker Image - support_prj_pstmt-git-action
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Package JAR
+    name: Build, Package JAR, and Push Docker Image
     runs-on: ubuntu-latest
 
     steps:
@@ -31,8 +31,7 @@ jobs:
         run: echo "BUILD_TIMESTAMP=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: Debug Timestamp
-        run: |
-          echo "Generated Timestamp: ${{ env.BUILD_TIMESTAMP }}"
+        run: echo "Generated Timestamp: ${{ env.BUILD_TIMESTAMP }}"
 
       - name: Print Build Metadata
         run: |
@@ -44,6 +43,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -Dcommit.message=${{ env.COMMIT_MSG }}
 
+      - name: Find JAR Name
+        run: |
+          JAR_NAME=$(ls -t target/*.jar | head -n 1)
+          echo "JAR_NAME=$JAR_NAME"
+          echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
+
       - name: List JAR Output
         run: ls -lh target/*.jar
 
@@ -52,3 +57,16 @@ jobs:
         with:
           name: support-jar-${{ env.COMMIT_MSG }}
           path: target/*.jar
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/support-prj-pstmt:latest
