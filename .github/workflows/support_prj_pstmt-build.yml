@@ -31,7 +31,8 @@ jobs:
         run: echo "BUILD_TIMESTAMP=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
 
       - name: Debug Timestamp
-        run: echo "Generated Timestamp: ${{ env.BUILD_TIMESTAMP }}"
+        run: |
+        echo "Generated Timestamp: ${{ env.BUILD_TIMESTAMP }}"
 
       - name: Print Build Metadata
         run: |
