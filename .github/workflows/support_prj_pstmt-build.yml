@@ -1,4 +1,4 @@
-name: Build and Push Docker Image - support_prj_pstmt-git-action
+name: Build and Push Docker Image - support-boot-pstmt-legacy
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
 
       - name: Print Build Metadata
         run: |
-          echo "App Name: support_prj_pstmt-git-action"
+          echo "App Name: support-boot-pstmt-legacy"
           echo "Build Time (UTC): ${{ env.BUILD_TIMESTAMP }}"
           echo "Branch: ${{ github.ref }}"
           echo "Triggered by: ${{ github.actor }}"
