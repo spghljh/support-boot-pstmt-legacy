@@ -40,11 +40,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -Dcommit.message=${{ env.COMMIT_MSG }}
 
-      - name: Find JAR Name
+      - name: Extract Commit Message
         run: |
-          JAR_NAME=$(ls -t target/*.jar | head -n 1)
-          echo "JAR_NAME=$JAR_NAME"
-          echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
+          RAW_MSG="${{ github.event.head_commit.message }}"
+          SAFE_COMMIT_MSG=$(echo "$RAW_MSG" | sed 's/[^[:alnum:]]/-/g' | sed 's/-\{2,\}/-/g' | sed 's/^-//;s/-$//')
+          echo "COMMIT_MSG=$SAFE_COMMIT_MSG"
+          echo "COMMIT_MSG=$SAFE_COMMIT_MSG" >> $GITHUB_ENV
 
       - name: List JAR Output
         run: ls -lh target/*.jar
