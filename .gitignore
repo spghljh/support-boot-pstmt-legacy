@@ -21,6 +21,17 @@ out/
 *.lock
 
 application-dev.properties
+application-dev-support-maria.properties
+application-dev-support-mysql.properties
+application-dev-support-oracle.properties
+application-dev-support-postgres.properties
+
+application-dev.yml
+application-dev-support-maria.yml
+application-dev-support-mysql.yml
+application-dev-support-oracle.yml
+application-dev-support-postgres.yml
+
 .env
 
 *.db
