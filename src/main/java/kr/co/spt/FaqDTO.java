@@ -1,4 +1,4 @@
-package kr.co.support;
+package kr.co.spt;
 
 import java.sql.Date;
 

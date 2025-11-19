@@ -1,4 +1,4 @@
-package kr.co.support;
+package kr.co.spt;
 
 public class FaqtypeDTO {
 	private String faqtype_id;

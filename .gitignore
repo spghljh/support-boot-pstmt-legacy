@@ -28,7 +28,7 @@ out/
 *.lock
 .env
 
-application-dev.properties
+application.properties
 application-dev-user-maria.properties
 application-dev-user-mysql.properties
 application-dev-user-oracle.properties
